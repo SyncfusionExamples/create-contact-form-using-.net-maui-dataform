@@ -60,29 +60,29 @@ namespace ContactForm
         /// <param name="e">The event arguments.</param>
         private async void OnDataFormValidateForm(object? sender, DataFormValidateFormEventArgs e)
         {
-            if (this.dataForm != null && App.Current?.MainPage != null)
+            if (this.dataForm != null && App.Current?.Windows[0].Page != null)
             {
                 if (e.ErrorMessage != null && e.ErrorMessage.Count > 0)
                 {
                     if (e.ErrorMessage.Count == 2)
                     {
-                        await App.Current.MainPage.DisplayAlert("", "Please enter the contact name and mobile number", "OK");
+                        await DisplayAlert("", "Please enter the contact name and mobile number", "OK");
                     }
                     else
                     {
                         if (e.ErrorMessage.ContainsKey(nameof(ContactFormModel.Name)))
                         {
-                            await App.Current.MainPage.DisplayAlert("", "Please enter the contact name", "OK");
+                            await DisplayAlert("", "Please enter the contact name", "OK");
                         }
                         else
                         {
-                            await App.Current.MainPage.DisplayAlert("", "Please enter the mobile number", "OK");
+                            await DisplayAlert("", "Please enter the mobile number", "OK");
                         }
                     }
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Contact saved", "OK");
+                    await DisplayAlert("", "Contact saved", "OK");
                 }
             }
         }
@@ -114,5 +114,19 @@ namespace ContactForm
                 this.saveButton = null;
             }
         }
+
+        /// <summary>
+        /// Displays an alert dialog to the user.
+        /// </summary>
+        /// <param name="title">The title of the alert dialog.</param>
+        /// <param name="message">The message to display.</param>
+        /// <param name="cancel">The text for the cancel button.</param>
+        /// <returns>A task representing the asynchronous alert display operation.</returns>
+        private Task DisplayAlert(string title, string message, string cancel)
+        {
+            return App.Current?.Windows?[0]?.Page!.DisplayAlert(title, message, cancel)
+                   ?? Task.FromResult(false);
+        }
     }
+
 }

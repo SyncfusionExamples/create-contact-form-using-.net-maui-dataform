@@ -4,19 +4,20 @@
              xmlns:local="clr-namespace:ContactForm"
              xmlns:thickness ="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
              xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
+             x:DataType="local:ContactFormViewModel"
              x:Class="ContactForm.MainPage">
 
-    <Frame BorderColor="{OnIdiom Default=Transparent, Desktop=#C2C2C2}" MaximumHeightRequest="{OnPlatform MacCatalyst=800}"
+    <Border  MaximumHeightRequest="{OnPlatform MacCatalyst=800}"
                 VerticalOptions="{OnPlatform MacCatalyst=Center}"
-                HasShadow="False" Grid.ColumnSpan="{OnIdiom Default=2, Desktop=1}"
-                CornerRadius="10" Grid.Column="0" WidthRequest="{OnPlatform WinUI=400, MacCatalyst=600, Default=-1}"
+                Grid.ColumnSpan="{OnIdiom Default=2, Desktop=1}"
+                 Grid.Column="0" WidthRequest="{OnPlatform WinUI=400, MacCatalyst=600, Default=-1}"
                 HorizontalOptions="{OnIdiom Desktop=Center, Default=Fill}" Padding="0">
-        <Frame.Margin>
+        <Border.Margin>
             <OnPlatform x:TypeArguments="thickness:Thickness">
                 <On Platform="MacCatalyst" Value="20"/>
                 <On Platform="UWP" Value="20"/>
             </OnPlatform>
-        </Frame.Margin>
+        </Border.Margin>
         <Grid RowDefinitions="0.9*, 1, 0.1*">
             <Grid.BindingContext>
                 <local:ContactFormViewModel/>
@@ -36,35 +37,35 @@
 
                     <dataForm:DataFormGroupItem Name="Name">
                         <dataForm:DataFormGroupItem.Items>
-                            <dataForm:DataFormTextItem FieldName="Name" Padding="0, 10, 10, 10" >
-                                <dataForm:DataFormTextItem.LeadingLabelIcon>
-                                    <FontImageSource Glyph="F" Color="#79747E" FontFamily="InputLayoutIcons" Size="18" />
-                                </dataForm:DataFormTextItem.LeadingLabelIcon>
+                            <dataForm:DataFormTextItem FieldName="Name" Padding="0, 10, 10, 10" ShowLeadingView="True">
+                                <dataForm:DataFormTextItem.LeadingView>
+                                    <Label Text="F" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                                </dataForm:DataFormTextItem.LeadingView>
                             </dataForm:DataFormTextItem>
-                            <dataForm:DataFormTextItem FieldName="LastName" LeadingLabelIcon="" Padding="0, 10, 10, 10"/>
+                            <dataForm:DataFormTextItem FieldName="LastName" Padding="0, 10, 10, 10"/>
                         </dataForm:DataFormGroupItem.Items>
                     </dataForm:DataFormGroupItem>
 
                     <dataForm:DataFormGroupItem Name="Mobile">
                         <dataForm:DataFormGroupItem.Items>
-                            <dataForm:DataFormCustomItem FieldName="Mobile" Padding="0, 10, 10, 10" >
-                                <dataForm:DataFormCustomItem.LeadingLabelIcon>
-                                    <FontImageSource Glyph="E" Color="#79747E" FontFamily="InputLayoutIcons" Size="18" />
-                                </dataForm:DataFormCustomItem.LeadingLabelIcon>
+                            <dataForm:DataFormCustomItem FieldName="Mobile" Padding="0, 10, 10, 10" ShowLeadingView="True" >
+                                <dataForm:DataFormCustomItem.LeadingView>
+                                    <Label Text="E" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                                </dataForm:DataFormCustomItem.LeadingView>
                             </dataForm:DataFormCustomItem>
-                            <dataForm:DataFormCustomItem FieldName="Landline" LeadingLabelIcon="" Padding="0, 10, 10, 10"/>
+                            <dataForm:DataFormCustomItem FieldName="Landline"  Padding="0, 10, 10, 10"/>
                         </dataForm:DataFormGroupItem.Items>
                     </dataForm:DataFormGroupItem>
 
                     <dataForm:DataFormGroupItem Name="Address" ColumnCount="2">
                         <dataForm:DataFormGroupItem.Items>
                             <dataForm:DataFormMultilineItem FieldName="Address" RowSpan="2" Padding="0, 10, 10, 10">
-                                <dataForm:DataFormMultilineItem.LeadingLabelIcon>
-                                    <FontImageSource Glyph="C" Color="#79747E" FontFamily="InputLayoutIcons" Size="20" />
-                                </dataForm:DataFormMultilineItem.LeadingLabelIcon>
+                                <dataForm:DataFormMultilineItem.LeadingView>
+                                    <Label Text="C" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                                </dataForm:DataFormMultilineItem.LeadingView>
                             </dataForm:DataFormMultilineItem>
-                            <dataForm:DataFormTextItem FieldName="City" LeadingLabelIcon="" Padding="0, 10, 10, 10"/>
-                            <dataForm:DataFormTextItem FieldName="State" LeadingLabelIcon="" Padding="0, 10, 10, 10">
+                            <dataForm:DataFormTextItem FieldName="City"  Padding="0, 10, 10, 10"/>
+                            <dataForm:DataFormTextItem FieldName="State"  Padding="0, 10, 10, 10">
                                 <dataForm:DataFormTextItem.DefaultLayoutSettings>
                                     <dataForm:DataFormDefaultLayoutSettings LabelWidth="{OnIdiom Desktop=0.2*, Phone=0.3*}" EditorWidth="{OnIdiom Desktop=0.8*, Phone=0.7*}"/>
                                 </dataForm:DataFormTextItem.DefaultLayoutSettings>
@@ -74,9 +75,9 @@
                     </dataForm:DataFormGroupItem>
 
                     <dataForm:DataFormTextItem FieldName="Email" Padding="0, 10, 10, 10" Keyboard="Email">
-                        <dataForm:DataFormTextItem.LeadingLabelIcon>
-                            <FontImageSource Glyph="G" Color="#79747E" FontFamily="InputLayoutIcons" Size="20" />
-                        </dataForm:DataFormTextItem.LeadingLabelIcon>
+                        <dataForm:DataFormTextItem.LeadingView>
+                            <Label Text="G" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                        </dataForm:DataFormTextItem.LeadingView>
                     </dataForm:DataFormTextItem>
                 </dataForm:SfDataForm.Items>
             </dataForm:SfDataForm>
@@ -90,7 +91,7 @@
                         HorizontalOptions="Center" />
            
         </Grid>
-    </Frame>
+    </Border>
     <ContentPage.Behaviors>
         <local:ContactFormBehavior/>
     </ContentPage.Behaviors>
